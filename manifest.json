@@ -1,6 +1,6 @@
 {
   "version": "v2.3.5",
   "download_url": "https://github.com/projectsheldon/sheldon-binaries/releases/download/2.3.5/Sheldon.7z",
-  "loader_version": "1.5.4",
-  "loader_url": "https://github.com/projectsheldon/sheldon-binaries/releases/download/1.5.4/Loader.7z"
+  "loader_version": "1.5.5",
+  "loader_url": "https://github.com/projectsheldon/sheldon-binaries/releases/download/v1.5.5/Loader.7z"
 }
