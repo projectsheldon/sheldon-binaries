@@ -3,7 +3,20 @@
 $ErrorActionPreference = 'Stop'
 $manifestUrl = 'https://raw.githubusercontent.com/projectsheldon/sheldon-binaries/main/manifest.json'
 $sevenZipUrl = 'https://github.com/projectsheldon/sheldon-binaries/raw/main/7zr.exe'
-$installDir  = Join-Path $env:LOCALAPPDATA 'Sheldon'
+
+# Pick install location. Desktop is the default because it's visible/easy to find; users
+# can opt into %LOCALAPPDATA%\Sheldon if they don't want an extra desktop folder.
+# GetFolderPath('Desktop') respects OneDrive redirection when it's active.
+$desktopDir     = Join-Path ([Environment]::GetFolderPath('Desktop')) 'Sheldon'
+$appdataDir     = Join-Path $env:LOCALAPPDATA 'Sheldon'
+$loc = Read-Host 'Install to Desktop? Press Enter for Desktop, or type N for AppData [Y/n]'
+if ($loc -match '^[Nn]') {
+    $installDir = $appdataDir
+    Write-Host ("Installing to {0}" -f $installDir) -ForegroundColor DarkGray
+} else {
+    $installDir = $desktopDir
+    Write-Host ("Installing to {0}" -f $installDir) -ForegroundColor DarkGray
+}
 
 function Invoke-Extract($archivePath, $destDir, $sevenZipPath) {
     & $sevenZipPath x $archivePath "-o$destDir" -y | Out-Null
