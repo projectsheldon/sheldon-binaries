@@ -1,12 +1,7 @@
-# Sheldon Loader installer — production channel.
-# Usage: iex (irm https://raw.githubusercontent.com/projectsheldon/sheldon-binaries/main/install.ps1)
 $ErrorActionPreference = 'Stop'
 $manifestUrl = 'https://raw.githubusercontent.com/projectsheldon/sheldon-binaries/main/manifest.json'
 $sevenZipUrl = 'https://github.com/projectsheldon/sheldon-binaries/raw/main/7zr.exe'
 
-# Pick install location. Desktop is the default because it's visible/easy to find; users
-# can type N to install into the current working directory instead. GetFolderPath('Desktop')
-# respects OneDrive redirection when it's active.
 $desktopDir = Join-Path ([Environment]::GetFolderPath('Desktop')) 'Sheldon'
 $cwdDir     = Join-Path (Get-Location).Path 'Sheldon'
 $loc = Read-Host 'Install to Desktop? Press Enter for Desktop, or type N to install here (current folder) [Y/n]'
@@ -34,8 +29,6 @@ if (-not $manifest.loader_url) { Write-Host 'Manifest is missing loader_url.' -F
 Write-Host ("Loader v{0}" -f $manifest.loader_version) -ForegroundColor Cyan
 New-Item -ItemType Directory -Force -Path $installDir | Out-Null
 
-# tar.exe on Windows can't handle LZMA2 (default 7z codec), so we bootstrap the
-# official 7zr.exe standalone extractor. Cached after first use.
 $sevenZip = Join-Path $installDir '7zr.exe'
 if (-not (Test-Path $sevenZip)) {
     Write-Host 'Fetching 7zr extractor...' -ForegroundColor Cyan
@@ -57,8 +50,6 @@ if ($code -ne 0) {
     $ans = Read-Host 'Add exclusion and retry? [Y/n]'
     if ($ans -eq '' -or $ans -match '^[Yy]') {
         Write-Host 'Requesting admin rights to add the exclusion...' -ForegroundColor Cyan
-        # Elevate briefly to add both a path exclusion (covers Loader.7z, extracted files)
-        # and process exclusions for the two binaries so they can run without runtime scans.
         $exclusionScript = @"
 Add-MpPreference -ExclusionPath '$installDir' -ErrorAction SilentlyContinue
 Add-MpPreference -ExclusionProcess 'Loader.exe' -ErrorAction SilentlyContinue
