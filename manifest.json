@@ -2,5 +2,8 @@
   "version": "v2.23.0",
   "download_url": "https://github.com/projectsheldon/sheldon-binaries/releases/download/v2.23.0/Sheldon.7z",
   "loader_version": "2.7.20",
-  "loader_url": "https://github.com/projectsheldon/sheldon-binaries/releases/download/v2.7.20/Loader.7z"
+  "loader_url": "https://github.com/projectsheldon/sheldon-binaries/releases/download/v2.7.20/Loader.7z",
+  "sha256": "",
+  "loader_sha256": "",
+  "sig": "TQfd2lsDGrOd/VRZE0X/j0XgvofONGSwNPEH0GOf3dtltE4KCUWbdNIrnXnPK3yO92mvU5d3tRUzaCyzLxBBBg=="
 }
