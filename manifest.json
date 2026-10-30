@@ -1,9 +1,9 @@
 {
   "version": "v3.1.0",
   "download_url": "https://github.com/projectsheldon/sheldon-binaries/releases/download/v3.1.0/Sheldon.7z",
-  "loader_version": "3.2.0",
-  "loader_url": "https://github.com/projectsheldon/sheldon-binaries/releases/download/v3.2.0/Loader.7z",
+  "loader_version": "3.2.1",
+  "loader_url": "https://github.com/projectsheldon/sheldon-binaries/releases/download/v3.2.1/Loader.7z",
   "sha256": "4ca52358f336609b3de935ee3276d5adcf177e285e6fd5be18053e3a43b6c948",
-  "loader_sha256": "56c02b6cc4bd59f44e33d7da0303c8c2a7086a28f1fb4cb476ad21cdd162f94d",
-  "sig": "ld+O59o+PGcembA42DTZvLn07Rw7IMKJgZGXqAQf2DquEcQ4dM1yAhgsNlCRXScNq41Z4KQ+mXYS82lrgqp5Aw=="
+  "loader_sha256": "f20c77e2f40e1eb3a066cdd7a18e16d95d0e33d0db8f05cb305f44ea26036577",
+  "sig": "bEjFSu0C+4BX8Ka0zc/BNn1aX1tPKY6KjRtWtDpurejw5ejhrWIur0emOaRHHwaoQcC/6REejAUotRifiMDaBQ=="
 }
